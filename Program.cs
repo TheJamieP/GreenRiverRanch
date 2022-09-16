@@ -1,62 +1,68 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Runtime.CompilerServices;
 
 namespace Greenriver_Ranch
 {
-
+    public class Player
+    {
+        public string name;
+        public double cash, bank;
+        public int level;
+        public bool created;
+        public Dictionary<string, int> playerInv = new Dictionary<string, int>();
+        public Player(string name)
+        {
+            
+            if (this.created)
+            {
+                // leaving space for future save data loading
+            }
+            else
+            {
+                this.name = name;
+                this.bank = 1000;
+                this.cash = 50;
+                this.level = 1;
+                playerInv.Add("Shovel", 1);
+            };
+            
+        }
+    }
+    public class Vendor
+    {
+        public Dictionary<string, double> options = new Dictionary<string, double>();
+        
+        public void updateItems(int playerLevel)
+        {
+            if (playerLevel == 1)
+            {
+                
+            }
+        }
+    }
     public class Program
     {
         
         public static void Main(string[] args)
         {
-            var VenderOneItems = new Dictionary<string, double>()
+
+            var player = new Player("bob");
+            /*
+             How to index all items from the inv
+            string invString = "";
+            foreach(string item in player.playerInv.Keys)
             {
-                {"Shovel", 5.00},
-                {"Tomato Seed Pouch", 0.50}
-            };
-            var PlayerInv = new Dictionary<string, int>()
-            {
-                // {Item_name, item_quantity}
-            };
-            
-            int level = 1;
-            double bank = 1000.00;
-            double cash = 50.00;
-            println("Welcome to GreenRiver Ranch, a console based farming game!");
-            println("Please Enter Your Characters Name: ");
-            string name = read();
-            println($"Hello {name}, Let me introduce you to the market vendor sammy");
-            println("Sammy: Howdy There fellar, nice to see some new fellars in these parts. Would you like to browse my wares?");
-            print("Enter: ");
-            string decision = read().ToLower();
-            if(decision == "yes" || decision == "y")
-            {
-                string printString = "";
-                foreach(var items in VenderOneItems)
-                {
-                    printString += $"I sell {items.Key} for ${items.Value}, ";
-                }
-                println(printString);
+                invString += $"{item} ";
             }
-            println("Would you like to buy anything?");
-            
+            Console.WriteLine($"Name:  {player.name} \nBank:  {player.bank}\nCash:  {player.cash}\nLevel:  {player.level}\nInventory: {invString}");
+            */
                     
                 
             
             
             
         }
-        public static string read()
-        {
-            return Console.ReadLine();
-        }
-        public static void print(string message)
-        {
-            Console.Write(message);
-        }
-        public static void println(string message)
-        {
-            Console.WriteLine(message);
-        }
+        
     }
 }
