@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Runtime.CompilerServices;
+
 
 namespace Greenriver_Ranch
 {
@@ -10,10 +9,10 @@ namespace Greenriver_Ranch
         public double cash, bank;
         public int level;
         public bool created;
-        public Dictionary<string, int> playerInv = new Dictionary<string, int>();
+        public Dictionary<string, List<string>> playerInv = new Dictionary<string, List<string>>();
         public Player(string name)
         {
-            
+
             if (this.created)
             {
                 // leaving space for future save data loading
@@ -24,7 +23,7 @@ namespace Greenriver_Ranch
                 this.bank = 1000;
                 this.cash = 50;
                 this.level = 1;
-                playerInv.Add("Shovel", 1);
+                playerInv.Add("Shovel", new List<string> { "Shovel", "1", "0" });
             };
             
         }
@@ -46,22 +45,14 @@ namespace Greenriver_Ranch
         
         public static void Main(string[] args)
         {
+            // main game
+            Console.WriteLine("Welcome to Greenriver Ranch!");
+            Console.WriteLine("What is your name?");
+            var player = new Player(Console.ReadLine());
+            Console.WriteLine("Hello, " + player.name + "!");
 
-            var player = new Player("bob");
-            /*
-             How to index all items from the inv
-            string invString = "";
-            foreach(string item in player.playerInv.Keys)
-            {
-                invString += $"{item} ";
-            }
-            Console.WriteLine($"Name:  {player.name} \nBank:  {player.bank}\nCash:  {player.cash}\nLevel:  {player.level}\nInventory: {invString}");
-            */
-                    
-                
-            
-            
-            
+
+
         }
         
     }
